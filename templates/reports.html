@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>TumourVision AI - Reports</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #F0FDF4;
+            color: #172554;
+        }
+
+        /* ================= SIDEBAR ================= */
+
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+
+            width: 240px;
+            height: 100vh;
+
+            background: #064E3B;
+
+            padding: 25px 15px;
+        }
+
+        .logo {
+            text-align: center;
+
+            color: white;
+
+            font-size: 22px;
+            font-weight: bold;
+
+            margin-bottom: 35px;
+        }
+
+        .logo span {
+            color: #10B981;
+        }
+
+        .menu {
+            display: flex;
+            flex-direction: column;
+
+            gap: 10px;
+        }
+
+        .menu a {
+            display: block;
+
+            color: white;
+
+            text-decoration: none;
+
+            width: 100%;
+
+            padding: 14px 16px;
+
+            border-radius: 8px;
+
+            transition: 0.3s;
+        }
+
+        .menu a:hover {
+            background: #059669;
+        }
+
+        .menu a.active {
+            background: #059669;
+        }
+
+        /* ================= MAIN ================= */
+
+        .main {
+            margin-left: 240px;
+
+            min-height: 100vh;
+
+            padding: 40px;
+        }
+
+        .header {
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 30px;
+
+            color: #064E3B;
+        }
+
+        .header p {
+            margin-top: 8px;
+
+            color: #475569;
+        }
+
+        /* ================= REPORT CARD ================= */
+
+        .report-card {
+            max-width: 700px;
+
+            margin: 80px auto;
+
+            background: white;
+
+            border-radius: 16px;
+
+            padding: 50px;
+
+            text-align: center;
+
+            box-shadow:
+                0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .report-icon {
+            width: 80px;
+            height: 80px;
+
+            margin: 0 auto 25px;
+
+            border-radius: 50%;
+
+            background: #D1FAE5;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 38px;
+        }
+
+        .report-card h2 {
+            color: #064E3B;
+
+            margin-bottom: 12px;
+        }
+
+        .report-card p {
+            color: #64748B;
+
+            margin-bottom: 30px;
+
+            line-height: 1.6;
+        }
+
+        /* ================= BUTTON ================= */
+
+        .pdf-button {
+
+            display: inline-block;
+
+            padding: 15px 30px;
+
+            background: #059669;
+
+            color: white;
+
+            text-decoration: none;
+
+            border: none;
+
+            border-radius: 8px;
+
+            font-size: 16px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+        .pdf-button:hover {
+            background: #047857;
+
+            transform: translateY(-2px);
+        }
+
+        /* ================= MOBILE ================= */
+
+        @media (max-width: 768px) {
+
+            .sidebar {
+                width: 200px;
+            }
+
+            .main {
+                margin-left: 200px;
+
+                padding: 25px;
+            }
+
+            .report-card {
+                padding: 30px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <div class="sidebar">
+
+        <div class="logo">
+            🧬 Tumour<span>Vision</span>
+        </div>
+
+
+        <div class="menu">
+
+            <a href="/dashboard">
+                📊 Dashboard
+            </a>
+
+            <a href="/patient-analysis">
+                👤 Patient Analysis
+            </a>
+
+            <a href="/ct-scan">
+                🩻 CT Scan
+            </a>
+
+            <a href="/ai-results">
+                🤖 AI Results
+            </a>
+
+            <a href="/reports"
+               class="active">
+                📄 Reports
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= MAIN CONTENT ================= -->
+
+    <div class="main">
+
+
+        <div class="header">
+
+            <h1>
+                Reports
+            </h1>
+
+            <p>
+                Generate the completed AI analysis report.
+            </p>
+
+        </div>
+
+
+        <!-- ================= REPORT CARD ================= -->
+
+        <div class="report-card">
+
+
+            <div class="report-icon">
+
+                📄
+
+            </div>
+
+
+            <h2>
+                AI Analysis Report
+            </h2>
+
+
+            <p>
+                Your CT scan analysis has been completed.
+                Click the button below to generate the
+                TumourVision AI report as a PDF.
+            </p>
+
+
+            <a
+                href="/generate-report"
+                class="pdf-button"
+            >
+
+                📄 Generate PDF Report
+
+            </a>
+
+
+        </div>
+
+
+    </div>
+
+
+</body>
+
+</html>

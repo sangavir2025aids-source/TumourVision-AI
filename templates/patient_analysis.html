@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Patient Analysis - TumourVision AI
+    </title>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        body {
+
+            margin: 0;
+
+            font-family: Arial, sans-serif;
+
+            background: #F0FDF4;
+
+            color: #172554;
+        }
+
+
+        /* ================================
+           SIDEBAR
+        ================================= */
+
+        .sidebar {
+
+            position: fixed;
+
+            left: 0;
+
+            top: 0;
+
+            width: 240px;
+
+            height: 100vh;
+
+            background: #064E3B;
+
+            color: white;
+
+            padding: 25px 15px;
+        }
+
+
+        .logo {
+
+            text-align: center;
+
+            font-size: 22px;
+
+            font-weight: bold;
+
+            margin-bottom: 35px;
+        }
+
+
+        .menu a {
+
+            display: block;
+
+            color: white;
+
+            text-decoration: none;
+
+            padding: 14px 18px;
+
+            margin: 6px 0;
+
+            border-radius: 8px;
+        }
+
+
+        .menu a:hover,
+
+        .menu a.active {
+
+            background: #059669;
+        }
+
+
+        /* ================================
+           MAIN
+        ================================= */
+
+        .main {
+
+            margin-left: 240px;
+
+            padding: 35px;
+        }
+
+
+        .header {
+
+            margin-bottom: 25px;
+        }
+
+
+        .header h1 {
+
+            margin: 0;
+
+            color: #064E3B;
+        }
+
+
+        .header p {
+
+            margin-top: 8px;
+
+            color: #475569;
+        }
+
+
+        /* ================================
+           CARD
+        ================================= */
+
+        .card {
+
+            background: white;
+
+            border-radius: 18px;
+
+            padding: 30px;
+
+            max-width: 1000px;
+
+            box-shadow:
+                0 5px 20px
+                rgba(0, 0, 0, 0.08);
+        }
+
+
+        .card h2 {
+
+            margin-top: 0;
+
+            color: #064E3B;
+        }
+
+
+        /* ================================
+           SUCCESS MESSAGE
+        ================================= */
+
+        .success-message {
+
+            background: #D1FAE5;
+
+            color: #065F46;
+
+            border: 1px solid #10B981;
+
+            padding: 14px 18px;
+
+            border-radius: 8px;
+
+            margin-bottom: 22px;
+
+            font-weight: bold;
+        }
+
+
+        /* ================================
+           FORM
+        ================================= */
+
+        .form-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 22px;
+        }
+
+
+        .form-group {
+
+            display: flex;
+
+            flex-direction: column;
+        }
+
+
+        label {
+
+            font-weight: bold;
+
+            margin-bottom: 8px;
+
+            color: #064E3B;
+        }
+
+
+        input {
+
+            width: 100%;
+
+            padding: 14px;
+
+            border:
+                1px solid #CBD5E1;
+
+            border-radius: 9px;
+
+            font-size: 16px;
+
+            outline: none;
+        }
+
+
+        input:focus {
+
+            border-color: #059669;
+        }
+
+
+        /* ================================
+           SAVE BUTTON
+        ================================= */
+
+        .save-btn {
+
+            margin-top: 25px;
+
+            padding: 14px 28px;
+
+            border: none;
+
+            border-radius: 8px;
+
+            background: #059669;
+
+            color: white;
+
+            font-size: 16px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+
+        .save-btn:hover {
+
+            background: #047857;
+        }
+
+
+        /* ================================
+           MOBILE
+        ================================= */
+
+        @media (max-width: 800px) {
+
+            .sidebar {
+
+                position: relative;
+
+                width: 100%;
+
+                height: auto;
+            }
+
+
+            .main {
+
+                margin-left: 0;
+            }
+
+
+            .form-grid {
+
+                grid-template-columns:
+                    1fr;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =================================
+         SIDEBAR
+    ================================== -->
+
+    <div class="sidebar">
+
+        <div class="logo">
+
+            🧬 TumourVision
+
+        </div>
+
+
+        <div class="menu">
+
+            <a href="/dashboard">
+
+                📊 Dashboard
+
+            </a>
+
+
+            <a
+                href="/patient-analysis"
+                class="active"
+            >
+
+                👤 Patient Analysis
+
+            </a>
+
+
+            <a href="/ct-scan">
+
+                🩻 CT Scan
+
+            </a>
+
+
+            <a href="/ai-results">
+
+                🤖 AI Results
+
+            </a>
+
+
+            <a href="/reports">
+
+                📄 Reports
+
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================
+         MAIN CONTENT
+    ================================== -->
+
+    <div class="main">
+
+
+        <div class="header">
+
+            <h1>
+                Patient Analysis
+            </h1>
+
+            <p>
+                Enter basic patient information
+                before CT scan analysis.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+
+            <h2>
+                Patient Information
+            </h2>
+
+
+            <!-- =================================
+                 SUCCESS MESSAGE
+            ================================== -->
+
+            {% if saved %}
+
+            <div class="success-message">
+
+                ✓ Patient details saved successfully!
+
+            </div>
+
+            {% endif %}
+
+
+            <!-- =================================
+                 PATIENT FORM
+            ================================== -->
+
+            <form
+                method="POST"
+                action="/patient-analysis"
+            >
+
+
+                <div class="form-grid">
+
+
+                    <!-- PATIENT ID -->
+
+                    <div class="form-group">
+
+                        <label>
+                            Patient ID
+                        </label>
+
+                        <input
+                            type="text"
+                            name="patient_id"
+                            value="{{ patient_id }}"
+                            placeholder="Enter patient ID"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- PATIENT NAME -->
+
+                    <div class="form-group">
+
+                        <label>
+                            Patient Name
+                        </label>
+
+                        <input
+                            type="text"
+                            name="name"
+                            value="{{ name }}"
+                            placeholder="Enter patient name"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- AGE -->
+
+                    <div class="form-group">
+
+                        <label>
+                            Age
+                        </label>
+
+                        <input
+                            type="number"
+                            name="age"
+                            value="{{ age }}"
+                            placeholder="Enter age"
+                            min="1"
+                            max="120"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- EMAIL -->
+
+                    <div class="form-group">
+
+                        <label>
+                            Email
+                        </label>
+
+                        <input
+                            type="email"
+                            name="email"
+                            value="{{ email }}"
+                            placeholder="Enter email"
+                            required
+                        >
+
+                    </div>
+
+
+                </div>
+
+
+                <!-- SAVE -->
+
+                <button
+                    type="submit"
+                    class="save-btn"
+                >
+
+                    Save Patient Details
+
+                </button>
+
+
+            </form>
+
+
+        </div>
+
+    </div>
+
+
+</body>
+
+</html>

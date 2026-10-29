@@ -1,0 +1,32 @@
+
+# Python virtual environment
+venv/
+.venv/
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Large medical imaging datasets
+dataset/
+train_256/
+val_256/
+
+# Model files and training outputs
+*.keras
+*.h5
+*.weights.h5
+checkpoints/
+
+# Environment secrets
+.env
+
+# IDE files
+.vscode/
+
+# Uploaded scans and generated outputs
+uploads/
+outputs/
+
+# Generated reports
+*.pdf

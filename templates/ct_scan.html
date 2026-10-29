@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TumourVision AI - CT Scan</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #F0FDF4;
+            color: #172554;
+        }
+
+        /* SIDEBAR */
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            background: #064E3B;
+            position: fixed;
+            left: 0;
+            top: 0;
+            padding: 25px 18px;
+        }
+
+        .logo {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .menu a {
+            display: block;
+            color: #D1FAE5;
+            text-decoration: none;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 10px;
+        }
+
+        .menu a:hover {
+            background: #059669;
+            color: white;
+        }
+
+        .menu a.active {
+            background: #059669;
+            color: white;
+        }
+
+        /* MAIN */
+        .main {
+            margin-left: 250px;
+            min-height: 100vh;
+            padding: 30px 45px;
+        }
+
+        .topbar {
+            margin-bottom: 35px;
+        }
+
+        .topbar h2 {
+            color: #064E3B;
+        }
+
+        .page-title {
+            margin-bottom: 30px;
+        }
+
+        .page-title h1 {
+            color: #064E3B;
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        .page-title p {
+            color: #64748B;
+        }
+
+        /* UPLOAD CARD */
+        .upload-card {
+            background: white;
+            max-width: 850px;
+            padding: 40px;
+            border-radius: 18px;
+            border: 1px solid #D1FAE5;
+            box-shadow: 0 8px 25px rgba(6, 78, 59, 0.08);
+        }
+
+        .upload-icon {
+            width: 75px;
+            height: 75px;
+            background: #D1FAE5;
+            color: #059669;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 38px;
+            margin-bottom: 25px;
+        }
+
+        .upload-card h2 {
+            color: #064E3B;
+            margin-bottom: 10px;
+        }
+
+        .upload-card p {
+            color: #64748B;
+            margin-bottom: 25px;
+        }
+
+        input[type="file"] {
+            width: 100%;
+            padding: 15px;
+            border: 2px dashed #A7F3D0;
+            border-radius: 12px;
+            background: #F8FAFC;
+            margin-bottom: 20px;
+            cursor: pointer;
+        }
+
+        input[type="file"]:hover {
+            border-color: #059669;
+        }
+
+        .upload-btn {
+            background: #059669;
+            color: white;
+            border: none;
+            padding: 13px 25px;
+            border-radius: 9px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .upload-btn:hover {
+            background: #047857;
+        }
+
+        /* PREVIEW */
+        .preview-card {
+            background: white;
+            max-width: 850px;
+            margin-top: 25px;
+            padding: 30px;
+            border-radius: 18px;
+            border: 1px solid #D1FAE5;
+            box-shadow: 0 8px 25px rgba(6, 78, 59, 0.08);
+        }
+
+        .preview-card h2 {
+            color: #064E3B;
+            margin-bottom: 20px;
+        }
+
+        .preview-card img {
+            max-width: 100%;
+            max-height: 500px;
+            display: block;
+            margin: auto;
+            border-radius: 12px;
+            border: 1px solid #E2E8F0;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 800px) {
+            .sidebar {
+                width: 200px;
+            }
+
+            .main {
+                margin-left: 200px;
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+
+        <div class="logo">
+            🧬 TumourVision
+        </div>
+
+        <div class="menu">
+
+            <a href="/dashboard">
+                📊 Dashboard
+            </a>
+
+            <a href="/patient-analysis">
+                👤 Patient Analysis
+            </a>
+
+            <a href="/ct-scan" class="active">
+                🩻 CT Scan
+            </a>
+
+            <a href="/ai-results">
+                🤖 AI Results
+            </a>
+
+            <a href="/reports">
+                📄 Reports
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- MAIN CONTENT -->
+    <div class="main">
+
+        <div class="topbar">
+            <h2>CT Scan</h2>
+        </div>
+
+
+        <div class="page-title">
+
+            <h1>CT Scan Analysis</h1>
+
+            <p>
+                Upload a CT scan for AI segmentation
+            </p>
+
+        </div>
+
+
+        <!-- UPLOAD -->
+        <div class="upload-card">
+
+            <div class="upload-icon">
+                🩻
+            </div>
+
+            <h2>Upload CT Scan</h2>
+
+            <p>
+                Select a CT scan image for TumourVision AI analysis.
+            </p>
+
+            <form action="/upload" method="POST" enctype="multipart/form-data">
+
+                <input
+                    type="file"
+                    name="ct_scan"
+                    accept=".png,.jpg,.jpeg"
+                    required
+                >
+
+                <button type="submit" class="upload-btn">
+                    Analyze CT Scan
+                </button>
+
+            </form>
+
+        </div>
+
+
+        <!-- UPLOADED IMAGE -->
+        {% if filename %}
+
+        <div class="preview-card">
+
+            <h2>Uploaded CT Scan</h2>
+
+            <img
+                src="{{ url_for('uploaded_file', filename=filename) }}"
+                alt="Uploaded CT Scan"
+            >
+
+        </div>
+
+        {% endif %}
+
+    </div>
+
+</body>
+</html>

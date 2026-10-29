@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TumourVision AI - Dashboard</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #F0FDF4;
+            color: #172554;
+        }
+
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            background: #064E3B;
+            position: fixed;
+            left: 0;
+            top: 0;
+            padding: 25px 18px;
+        }
+
+        .logo {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .menu a {
+            display: block;
+            color: #D1FAE5;
+            text-decoration: none;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 10px;
+            font-size: 15px;
+        }
+
+        .menu a:hover {
+            background: #059669;
+            color: white;
+        }
+
+        .menu a.active {
+            background: #059669;
+            color: white;
+        }
+
+        .main {
+            margin-left: 250px;
+            min-height: 100vh;
+            padding: 30px 45px;
+        }
+
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .topbar h2 {
+            color: #064E3B;
+        }
+
+        .status {
+            background: #D1FAE5;
+            color: #047857;
+            padding: 10px 18px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .welcome {
+            margin-bottom: 35px;
+        }
+
+        .welcome h1 {
+            font-size: 34px;
+            color: #064E3B;
+            margin-bottom: 10px;
+        }
+
+        .welcome p {
+            color: #64748B;
+            font-size: 16px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            max-width: 900px;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 18px;
+            border: 1px solid #D1FAE5;
+            box-shadow: 0 8px 25px rgba(6, 78, 59, 0.08);
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(6, 78, 59, 0.15);
+        }
+
+        .icon {
+            width: 55px;
+            height: 55px;
+            background: #D1FAE5;
+            color: #059669;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 27px;
+            margin-bottom: 20px;
+        }
+
+        .card h3 {
+            color: #064E3B;
+            margin-bottom: 8px;
+        }
+
+        .card p {
+            color: #64748B;
+            margin-bottom: 20px;
+        }
+
+        .card a {
+            display: inline-block;
+            text-decoration: none;
+            background: #059669;
+            color: white;
+            padding: 10px 18px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .card a:hover {
+            background: #047857;
+        }
+
+        @media (max-width: 800px) {
+            .sidebar {
+                width: 200px;
+            }
+
+            .main {
+                margin-left: 200px;
+                padding: 25px;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+
+        <div class="logo">
+            🧬 TumourVision
+        </div>
+
+        <div class="menu">
+
+            <a href="/dashboard" class="active">
+                📊 Dashboard
+            </a>
+
+            <a href="/patient-analysis">
+                👤 Patient Analysis
+            </a>
+
+            <a href="/ct-scan">
+                🩻 CT Scan
+            </a>
+
+            <a href="/ai-results">
+                🤖 AI Results
+            </a>
+
+            <a href="/reports">
+                📄 Reports
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- Main Content -->
+    <div class="main">
+
+        <div class="topbar">
+
+            <h2>Dashboard</h2>
+
+            <div class="status">
+                ● AI System Ready
+            </div>
+
+        </div>
+
+
+        <div class="welcome">
+
+            <h1>TumourVision AI</h1>
+
+            <p>
+                Precision Liver Tumour Segmentation
+            </p>
+
+        </div>
+
+
+        <div class="cards">
+
+            <!-- Patient Analysis -->
+            <div class="card">
+
+                <div class="icon">
+                    👤
+                </div>
+
+                <h3>Patient Analysis</h3>
+
+                <p>
+                    View patient information
+                </p>
+
+                <a href="/patient-analysis">
+                    Open
+                </a>
+
+            </div>
+
+
+            <!-- CT Scan -->
+            <div class="card">
+
+                <div class="icon">
+                    🩻
+                </div>
+
+                <h3>CT Scan</h3>
+
+                <p>
+                    Upload CT scan for AI analysis
+                </p>
+
+                <a href="/ct-scan">
+                    Open
+                </a>
+
+            </div>
+
+
+            <!-- AI Results -->
+            <div class="card">
+
+                <div class="icon">
+                    🤖
+                </div>
+
+                <h3>AI Results</h3>
+
+                <p>
+                    View tumour segmentation results
+                </p>
+
+                <a href="/ai-results">
+                    Open
+                </a>
+
+            </div>
+
+
+            <!-- Reports -->
+            <div class="card">
+
+                <div class="icon">
+                    📄
+                </div>
+
+                <h3>Reports</h3>
+
+                <p>
+                    View patient analysis report
+                </p>
+
+                <a href="/reports">
+                    Open
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
